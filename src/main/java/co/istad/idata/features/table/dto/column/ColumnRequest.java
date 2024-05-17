@@ -1,9 +1,8 @@
-package co.istad.idata.features.table.dto;
+package co.istad.idata.features.table.dto.column;
 
 public record ColumnRequest(
         String columnName,
         String type,
         boolean primaryKey
 ) {
-    // Constructors, methods, etc. can be added as needed
 }

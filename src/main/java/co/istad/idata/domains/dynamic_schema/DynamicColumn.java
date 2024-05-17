@@ -1,12 +1,10 @@
-package co.istad.idata.domains;
+package co.istad.idata.domains.dynamic_schema;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
-@Table(name = "dynamic_columns")
+@Table(name = "dynamic_columns", schema = "public")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,15 +17,16 @@ public class DynamicColumn {
     @Column(name = "is_primary_key")
     private Boolean primaryKey;
 
+    @Column(name = "column_name")
     private String columnName;
 
+    @Column(name = "type")
     private String type;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private DynamicTable dynamicTable;
 
     public boolean isPrimaryKey() {
         return primaryKey != null && primaryKey;
     }
 }
-

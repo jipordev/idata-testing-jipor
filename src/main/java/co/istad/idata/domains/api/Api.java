@@ -1,29 +1,30 @@
-package co.istad.idata.domains;
+package co.istad.idata.domains.api;
 
+import co.istad.idata.domains.auth.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
-
 
 @Entity
-@Table(name = "dynamic_tables")
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
-public class DynamicTable {
+@Table(name = "apis")
+public class Api {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String tableName;
+
+    private LocalDateTime createdAt;
+
+    private String description;
+
     @ManyToOne
     private User owner;
-    private LocalDateTime createdAt;
-    @OneToMany
-    private List<DynamicColumn> columns;
+
 
 }
